@@ -27,7 +27,7 @@ export class UploadCertificateComponent implements OnInit {
 
   //UI items
   aadharNumber!: any;
-  eventId: number = 1;
+  eventId: number = 0;
   event: any;
 
   //image items
@@ -37,12 +37,16 @@ export class UploadCertificateComponent implements OnInit {
   alert: any;
   success = false;
   loading= false;
+  items: any;
 
   constructor(
     firestore: AngularFirestore,
     private afStorage: AngularFireStorage
   ) {
     this.itemsCollection = firestore.collection<Certificate>('certificate');
+     firestore.collection('eventDetail').valueChanges().subscribe(data => {
+      this.items = data;
+    });
   }
 
   ngOnInit(): void { }
@@ -71,6 +75,12 @@ export class UploadCertificateComponent implements OnInit {
 
     if (this.aadharNumber.toString().length != 12) {
       this.alert = "*Please enter valid aadhar number";
+      this.clearError();
+      return;
+    }
+
+    if (this.eventId == 0) {
+      this.alert = "*Please select event of certificate";
       this.clearError();
       return;
     }
@@ -109,12 +119,13 @@ export class UploadCertificateComponent implements OnInit {
       certificateUrl: this.image,
       eventId: this.eventId
     }
+    
     this.itemsCollection.add(data).then((result) => {
 
       if(result) {
         this.loading = false;
         this.aadharNumber = null;
-        this.eventId = 1;
+        this.eventId = 0;
         this.image = null;
         this.url = null;
         this.alert = "Certificate Uploaded successfully";

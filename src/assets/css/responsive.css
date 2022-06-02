@@ -24,4 +24,7 @@
 		width: 320px !important;
 		height: 420px !important;
 	}
+	.upload-file {
+		width: 250px !important;
+	}
 }
