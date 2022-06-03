@@ -31,4 +31,16 @@
 		width:100% !important;
 		top: 220px !important;
 	}
+	.url-img {
+		width: 200px !important;
+    height: 200px !important;
+	}
+	.uploadDropzone {
+		padding: 40px 10px !important;
+	}
+	.choose-input {
+		min-height: 200px !important;
+		top: 212px  !important;
+		width: 250px !important;
+	}
 }
