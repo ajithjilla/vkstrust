@@ -459,3 +459,12 @@ input[type=range]::-ms-thumb {
   height: 300px;
   border-radius: 10px;
 }
+
+.choose-input {
+  min-height: 151px;
+  position: -14px;
+  position: absolute;
+  top: 153px;
+  left: 16px;
+  opacity: 0;
+}

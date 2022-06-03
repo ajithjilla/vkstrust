@@ -27,4 +27,8 @@
 	.upload-file {
 		width: 250px !important;
 	}
+	.choose-file {
+		width:100% !important;
+		top: 220px !important;
+	}
 }
